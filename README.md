@@ -40,6 +40,10 @@ pnpm dsh web
 
 `pnpm run build` prepares the repository artifacts. `pnpm dsh web` uses those built artifacts without rebuilding.
 
+### Run via Nix
+
+With [Nix flakes](https://nixos.wiki/wiki/Flakes) enabled, `nix develop` opens a devShell with the pinned Node, pnpm, and C toolchain, and `nix build .#dsh` builds a standalone `dsh` binary at `./result/bin/dsh`.
+
 ## Community and support
 
 - Submit feedback or bug reports through [GitHub Discussions](https://github.com/deepseek-ai/deepseek-harness/discussions).
