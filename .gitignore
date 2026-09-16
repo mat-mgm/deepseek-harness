@@ -1,5 +1,7 @@
 CLAUDE.local.md
 .env
+/result
+/result-*
 node_modules/
 lib/
 *.tsbuildinfo
