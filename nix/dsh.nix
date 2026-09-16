@@ -66,8 +66,11 @@ stdenv.mkDerivation (finalAttrs: {
     mkdir -p $out/libexec/deepseek-harness
     cp -r . $out/libexec/deepseek-harness/
     mkdir -p $out/bin
+    # node-addon-require-builtin's prebuilt binary does V8-internal
+    # field-offset probing that fails against nixpkgs' Node build; --expose-internals
+    # is the Loader's own documented fallback for reaching the same internals.
     makeWrapper ${nodejs}/bin/node $out/bin/dsh \
-      --add-flags "$out/libexec/deepseek-harness/apps/cli/lib/bin.js"
+      --add-flags "--expose-internals $out/libexec/deepseek-harness/apps/cli/lib/bin.js"
     runHook postInstall
   '';
 
